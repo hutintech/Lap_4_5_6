@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Lap_4_5_6.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,20 @@ namespace Lap_4_5_6.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var upcomingCourses = _dbContext.Courses
+                .Include(x => x.Lecturer)
+                .Include(x => x.Category)
+                .Where(x => x.DateTime > DateTime.Now);
+            return View(upcomingCourses);
         }
 
         public ActionResult About()
