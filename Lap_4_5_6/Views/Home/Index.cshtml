@@ -13,3 +13,27 @@
         }
     </ul>
 </div>
+
+<ul class="course">
+    @foreach(var c in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @c.DateTime.ToString("MM")
+                </div>
+                <div class="day">
+                    @c.DateTime.ToString("dd")
+                </div>
+            </div>
+            <div class="details">
+                <span class="lecturer">
+                    @c.Lecturer.Name
+                </span>
+                <span class="category">
+                    @c.Category.Name
+                </span>
+            </div>
+        </li>
+    }
+</ul>

@@ -79,6 +79,7 @@ namespace Lap_4_5_6.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string Name { get; internal set; }
     }
 
     public class ResetPasswordViewModel
