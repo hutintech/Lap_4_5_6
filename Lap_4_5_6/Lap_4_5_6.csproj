@@ -227,8 +227,17 @@
     <Compile Include="Migrations\201710070701123_Create RegisterViewModel and update DB.Designer.cs">
       <DependentUpon>201710070701123_Create RegisterViewModel and update DB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710070730585_update DB for Register.cs" />
+    <Compile Include="Migrations\201710070730585_update DB for Register.Designer.cs">
+      <DependentUpon>201710070730585_update DB for Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710120304379_AddNameColumnToApplicationUser2.cs" />
+    <Compile Include="Migrations\201710120304379_AddNameColumnToApplicationUser2.Designer.cs">
+      <DependentUpon>201710120304379_AddNameColumnToApplicationUser2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -335,6 +344,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710070701123_Create RegisterViewModel and update DB.resx">
       <DependentUpon>201710070701123_Create RegisterViewModel and update DB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070730585_update DB for Register.resx">
+      <DependentUpon>201710070730585_update DB for Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710120304379_AddNameColumnToApplicationUser2.resx">
+      <DependentUpon>201710120304379_AddNameColumnToApplicationUser2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
