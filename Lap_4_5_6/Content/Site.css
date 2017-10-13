@@ -29,17 +29,24 @@ textarea {
 }
 .course>li{
     position:relative;
-    margin-bottom:30px;
+    margin-bottom:40px;
 }
 .course > li .date{
     text-align: center;
     background-color : #1108e0;
     color : antiquewhite;
-    width: 60px;
+    width: 100px;
     border-radius : 8px;
 }
 .course > li .details{
     position : absolute;
     top : 0;
-    left : 70px;
+    left : 110px;
+}
+
+.navbar-inverse {
+
+    background-color: #092a11;
+    border-color: #080808;
+
 }

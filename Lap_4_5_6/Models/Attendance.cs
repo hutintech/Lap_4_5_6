@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Lap_4_5_6.Models
@@ -14,5 +15,6 @@ namespace Lap_4_5_6.Models
         [Key]
         [Column(Order =2)]
         public string AttendeeId { get; set; }
+        public ICollection<object> Followers { get; internal set; }
     }
 }
