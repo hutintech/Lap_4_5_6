@@ -1,10 +1,8 @@
-﻿
-using Lap_4_5_6.Models;
+﻿using Lap_4_5_6.Models;
+using Lap_4_5_6.ViewModels;
 using System;
 using System.Data.Entity;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Lap_4_5_6.Controllers
@@ -24,7 +22,13 @@ namespace Lap_4_5_6.Controllers
                 .Include(x => x.Lecturer)
                 .Include(x => x.Category)
                 .Where(x => x.DateTime > DateTime.Now);
-            return View(upcomingCourses);
+
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = upcomingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
 
         public ActionResult About()

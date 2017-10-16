@@ -1,8 +1,10 @@
 ﻿@model Lap_4_5_6.ViewModels.CoursesViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Attending</h2>
 
 <ul class="course">
     @foreach (var course in Model.UpcommingCourses)
@@ -22,7 +24,7 @@
                     Giảng viên: @course.Lecturer.Name
                     @if (Model.ShowAction)
                     {
-                        <button class="btn btn-default btn-sm js-toggle-following">Theo dõi?</button>
+                        <button data-user-id="@course.LecturerId" class="btn btn-default btn-sm js-toggle-following">Theo dõi?</button>
                     }
                 </span>
                 <br />
@@ -31,7 +33,7 @@
                 </span>
                 @if (Model.ShowAction)
                 {
-                    <button class="btn btn-default btn-sm js-toggle-attendance">Tham gia?</button>
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Tham gia?</button>
                 }
             </div>
         </li>
