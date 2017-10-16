@@ -1,10 +1,10 @@
-﻿@model Lap_4_5_6.ViewModels.CoursesViewModel
+﻿
 @{
-    ViewBag.Title = "Attending";
+    ViewBag.Title = "Folowing";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Attending</h2>
+<h2>Folowing</h2>
 
 <ul class="course">
     @foreach (var course in Model.UpcommingCourses)
@@ -22,15 +22,15 @@
             <div class="details">
                 <span class="lecturer">
                     Giảng viên: @course.Lecturer.Name
-                    @if (Model.ShowAction)
-                    {
-                        <button data-user-id="@course.LecturerId" class="btn btn-default btn-sm js-toggle-following">Theo dõi?</button>
-                    }
                 </span>
                 <br />
                 <span class="category">
                     Khóa học: @course.Category.Name
                 </span>
+                @if (Model.ShowAction)
+                {
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Tham gia?</button>
+                }
             </div>
         </li>
     }
@@ -47,11 +47,12 @@
                         button
                             .removeClass("btn-default")
                             .addClass("btn-info")
-                            .off("click")
-                            .text("Đang tới...");
+                            .text("Đang tham gia...");
                     })
                     .fail(function () {
-                        alert("Lỗi rồi...");
+                        button.removeClass("btn-info")
+                              .addClass("btn-default")
+                              .text("Tham gia");
                     });
             });
 
@@ -63,7 +64,8 @@
                             .text("Đang theo dõi...");
                     })
                     .fail(function () {
-                        alert("Lỗi rồi...");
+                        button
+                            .text("Theo dõi...");
                     });
             });
         })

@@ -20,10 +20,8 @@ namespace Lap_4_5_6.Controllers
         public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
-            if(_dbContext.Attendances.Any(x => x.AttendeeId == userId && x.CourseId == attendanceDto.CourseId))
-            {
+            if(_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseId))
                 return BadRequest("Attendance đã tồn tại!");
-            }
 
             var attendance = new Attendance
             {

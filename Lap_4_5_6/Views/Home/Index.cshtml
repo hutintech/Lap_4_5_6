@@ -20,9 +20,9 @@
             <div class="details">
                 <span class="lecturer">
                     Giảng viên: @course.Lecturer.Name
-                    @if (Model.ShowAction)
+                    @if(Model.ShowAction)
                     {
-                        <button class="btn btn-default btn-sm js-toggle-following">Theo dõi?</button>
+                        <button data-user-id="@course.LecturerId" class="btn btn-default btn-sm js-toggle-following">Theo dõi?</button>
                     }
                 </span>
                 <br />
@@ -31,7 +31,7 @@
                 </span>
                 @if (Model.ShowAction)
                 {
-                    <button class="btn btn-default btn-sm js-toggle-attendance">Tham gia?</button>
+                    <button data-course-id="@course.Id" class="btn btn-success btn-sm js-toggle-attendance">Tham gia?</button>
                 }
             </div>
         </li>
@@ -49,10 +49,13 @@
                         button
                             .removeClass("btn-default")
                             .addClass("btn-info")
-                            .text("Đang tới...");
+                            .text("Đang tham gia...");
                     })
                     .fail(function () {
-                        alert("Lỗi rồi...");
+                        button
+                            .removeClass("btn-info")
+                            .addClass("btn-default")
+                            .text("Tham gia?")
                     });
             });
 
@@ -61,10 +64,13 @@
                 $.post("/api/followings", { followeeId: button.attr("data-user-id") })
                     .done(function () {
                         button
-                            .text("Đang theo dõi...");
+                            .text("Đang theo dõi...")
+                            .css("backgroup-color", "red")
                     })
                     .fail(function () {
-                        alert("Lỗi rồi...");
+                        button
+                            .text("Theo dõi")
+                            .css("backgroup-color","green")
                     });
             });
         })

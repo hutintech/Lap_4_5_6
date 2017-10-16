@@ -72,5 +72,26 @@ namespace Lap_4_5_6.Controllers
 
             return View(viewModel);
         }
+
+        [Authorize]
+        public ActionResult Folowing()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var course = _DbContext.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Course)
+                .Include(l => l.Lecturer)
+                .Include(l => l.Category)
+                .ToList();
+
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = course,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
+        }
     }
 }
